@@ -18,7 +18,7 @@ window.Ethereum = (function() {
         var dk = keythereum.create()
         return {
             privateKey: dk.privateKey.toString('hex'),
-            publicKey: ethUtils.privateToAddress(dk.privateKey).toString('hex')
+            publicKey: '0x' + ethUtils.privateToAddress(dk.privateKey).toString('hex')
         }
     }
 
