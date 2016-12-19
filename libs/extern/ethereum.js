@@ -28,7 +28,7 @@ window.Ethereum = (function() {
     }
 
     return {
-        sign: signTransaction,
+        signTransaction: signTransaction,
         generateKeys: generateKeys,
         privateToPublic: privateToPublic
     }
