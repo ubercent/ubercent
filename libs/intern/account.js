@@ -49,7 +49,7 @@ window.Account = new function() {
             callback(formatBalance(balance));
         });
         Backend.nonce(publicKey, function(_nonce) {
-            nonce = Number(_nonce) + 1;
+            nonce = Number(_nonce);// + 1;
         })
     }
 

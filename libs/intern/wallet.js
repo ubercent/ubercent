@@ -1,7 +1,6 @@
 var Wallet = (function() {
     var gasPrice = 41000000000;
     var gasLimit = 53000;
-    var nonce = 0;
 
     function spend(amount, receiver, callback) {
     	console.log('spend',amount,receiver)
