@@ -3,11 +3,12 @@ window.Backend = {
     balance: function(publicKey, callback) {
         // var url = 'https://blockexplorer.com/api/addr/' + publicKey;
         // var url = 'https://blockexplorer.com/api/addr/' + publicKey;
-        // var url = 'https://api.etherscan.io/api?module=account&action=balance&tag=latest&apikey=6NIBZMKYHKN6TMGAPFAH384X6D1YKUVVC8&address=' + publicKey;
-        var url = 'https://etherchain.org/api/account/' + publicKey;
+        var url = 'https://api.etherscan.io/api?module=account&action=balance&tag=latest&apikey=6NIBZMKYHKN6TMGAPFAH384X6D1YKUVVC8&address=' + publicKey;
+        // var url = 'https://etherchain.org/api/account/' + publicKey;
 
         function formatBalance(result) {
-            return (result && result.data && result.data[0]) ? result.data[0].balance : 0;
+            // return (result && result.data && result.data[0]) ? result.data[0].balance : 0;
+            return (result && result.result) ? result.result : 0;
         }
 
         httpGet(url, function(result) {
