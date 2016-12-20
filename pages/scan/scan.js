@@ -13,7 +13,7 @@
         '<div id="imghelp">drag and drop a QRCode here' +
         '</div>';
 
-    var vidhtml = '<video id="v" autoplay></video>';
+    var vidhtml = '<video id="v" autoplay height="100%" width="100%"></video>';
 
     function handleFile(f) {
         app.showLoading();
