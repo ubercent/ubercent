@@ -62,7 +62,7 @@ window.Account = new function() {
     }
 
     function getNonce() {
-        return nonce?nonce+1:0;
+        return nonce?nonce*2:0;
     }
 
     function setPrivateKey(privateKey) {
