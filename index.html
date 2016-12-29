@@ -17,18 +17,12 @@
     <meta name="apple-touch-fullscreen" content="yes">
     <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
     <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-    <!--begincss-->
-    <link rel="stylesheet" type="text/css" href="pages/styles.css">
-    <link rel="stylesheet" type="text/css" href="pages/home/home.css">
-    <link rel="stylesheet" type="text/css" href="pages/export/export.css">
-    <link rel="stylesheet" type="text/css" href="pages/receive/receive.css">
-    <link rel="stylesheet" type="text/css" href="pages/scan/scan.css">
-    <link rel="stylesheet" type="text/css" href="pages/send/send.css">
-    <!--endcss-->
+    <link rel="stylesheet" type="text/css" href="dist/styles.min.css">
+
     <meta name="description" content="Ubercent is the easiest way to transfer money. Private, Secure and Open Source. No Setup, No Signup.">
-    <meta property="og:image" content="https://ubercent.firebaseapp.com/images/touch/icon-512x512.png" />
-    <meta property="og:url" content="https://ubercent.firebaseapp.com/" />
-    <meta name="twitter:image" content="https://ubercent.firebaseapp.com/images/touch/icon-512x512.png" />
+    <meta property="og:image" content="https://ubercent.github.io/images/touch/icon-512x512.png" />
+    <meta property="og:url" content="https://ubercent.github.io/" />
+    <meta name="twitter:image" content="https://ubercent.github.io/images/touch/icon-512x512.png" />
     <meta name="twitter:author" content="@RobinLinus" />
     <meta property="og:type" content="article" />
     <meta property="og:author" content="https://facebook.com/RobinLinus" />
@@ -51,7 +45,6 @@
             </header>
             <div class="content">
                 <a href="#scan" class="item ripple">Send</a>
-                <!-- <a href="javascript:document.querySelector('.file-input-x42').click()" class="item ripple">Send</a> -->
                 <a href="#receive" class="item ripple">Receive</a>
                 <a href="#export" class="item ripple">Export</a>
             </div>
@@ -93,10 +86,10 @@
                     <a id="print" href="javascript:window.print()">
                         <img data-src="images/print.svg">
                     </a>
-                    <a id="vcard" download="vcard.vcf" href="data:text/x-vcalendar;base64,QkVHSU46VkNBUkQKVVJMOmh0dHBzOi8vdWJlcmNlbnQuZmlyZWJhc2VhcHAuY29tLyNzZW5kP3M9Yml0Y29pbjoxQmgzeEhjdEVhcGhNOGp1Y0E0WXNHQnpDcHE2dnhoWkp3IApFTkQ6VkNBUkQ">
+<!--                     <a id="vcard" download="vcard.vcf" href="data:text/x-vcalendar;base64,QkVHSU46VkNBUkQKVVJMOmh0dHBzOi8vdWJlcmNlbnQuZmlyZWJhc2VhcHAuY29tLyNzZW5kP3M9Yml0Y29pbjoxQmgzeEhjdEVhcGhNOGp1Y0E0WXNHQnpDcHE2dnhoWkp3IApFTkQ6VkNBUkQ">
                         <img data-src="images/contact_mail.svg">
                     </a>
-                </div>
+ -->                </div>
             </div>
             <div id="publicKey"></div>
         </div>
@@ -131,28 +124,7 @@
             <div data-loader="ball-fade"></div>
         </div>
     </div>
-    <!--beginjs-->
-    <script src="libs/extern/ethereum.min.js"></script>
-    <script src="libs/extern/identicon.js"></script>
-    <script src="libs/extern/libqrcode.js"></script>
-    <script src="libs/extern/qr.js"></script>
-    <script src="libs/intern/slim-query.js"></script>
-    <script src="libs/intern/exchange.js"></script>
-    <script src="libs/intern/device-detection.js"></script>
-    <script src="libs/intern/backend.js"></script>
-    <script src="libs/intern/account.js"></script>
-    <script src="pages/home/home.js"></script>
-    <script src="pages/export/export.js"></script>
-    <script src="pages/receive/receive.js"></script>
-    <script src="pages/scan/file-input.js"></script>
-    <script src="libs/intern/image-resizer.js"></script>
-    <script src="pages/scan/scan.js"></script>
-    <script src="libs/intern/wallet.js"></script>
-    <script src="pages/send/send.js"></script>
-    <script src="pages/app.js"></script>
-    <script src="libs/intern/router.js"></script>
-    <script src="libs/intern/deferred-images.js"></script>
-    <!--endjs-->
+    <script src="dist/scripts.min.js" async></script>
 </body>
 
 </html>
