@@ -1,0 +1,16 @@
+rm -rf dist
+mkdir dist
+# uglifyjs `find src -name '*.js'` -o dist/scripts.min.js --compress --mangle
+uglifyjs `find src/libs -name '*.js'` -o dist/libs.min.js --compress --mangle
+uglifyjs `find src/pages -name '*.js'` -o dist/pages.min.js --compress --mangle
+uglifyjs dist/libs.min.js dist/pages.min.js -o dist/scripts.min.js
+rm dist/pages.min.js
+rm dist/libs.min.js
+cat `find src -name '*.css'` | cleancss -o dist/styles.min.css
+cp -r src/images dist/images
+cp src/index.html index.html
+cp src/manifest.json manifest.json
+perl -i -p0e 's/<!--begincss.*?endcss-->/<link rel="stylesheet" type="text\/css" href="dist\/styles.min.css">/s' index.html
+perl -i -p0e 's/<!--beginjs.*?endjs-->/<script src="dist\/scripts.min.js" async><\/script>/s' index.html
+# git add dist && git commit -m "Initial dist subtree commit"
+# git subtree push --prefix dist origin gh-pages

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ubercent</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#4285f4">
+    <link rel="manifest" href="manifest.json">
+    <meta name="msapplication-TileColor" content="#4285f4">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Ubercent">
+    <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#4285f4">
+    <meta name="apple-mobile-web-app-title" content="ubercent">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <!--begincss-->
+    <link rel="stylesheet" type="text/css" href="pages/styles.css">
+    <link rel="stylesheet" type="text/css" href="pages/home/home.css">
+    <link rel="stylesheet" type="text/css" href="pages/export/export.css">
+    <link rel="stylesheet" type="text/css" href="pages/receive/receive.css">
+    <link rel="stylesheet" type="text/css" href="pages/scan/scan.css">
+    <link rel="stylesheet" type="text/css" href="pages/send/send.css">
+    <!--endcss-->
+
+    <meta name="description" content="Ubercent is the easiest way to transfer money. Private, Secure and Open Source. No Setup, No Signup.">
+    <meta property="og:image" content="https://ubercent.github.io/images/touch/icon-512x512.png" />
+    <meta property="og:url" content="https://ubercent.github.io/" />
+    <meta name="twitter:image" content="https://ubercent.github.io/images/touch/icon-512x512.png" />
+    <meta name="twitter:author" content="@RobinLinus" />
+    <meta property="og:type" content="article" />
+    <meta property="og:author" content="https://facebook.com/RobinLinus" />
+    <meta property="fb:pages" content="451189218422617" />
+    <meta property="fb:profile_id" content="451189218422617" />
+</head>
+
+<body>
+    <div class="body">
+        <div class="page home">
+            <header>
+                <div class="balance">
+                    <h1>
+                        <span id="currency">$</span>&nbsp;<span id="balance">___</span>
+                    </h1>
+                    <h3>Wallet Balance</h3>
+                </div>
+                <div class="flex"></div>
+                <img id="identicon" class="scale-up">
+            </header>
+            <div class="content">
+                <a href="#scan" class="item ripple">Send</a>
+                <a href="#receive" class="item ripple">Receive</a>
+                <a href="#export" class="item ripple">Export</a>
+            </div>
+        </div>
+        <div class="page export slide-from-right">
+            <header>
+                <a href="#">
+                   <svg fill="#ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+                </a>
+                Export Code
+            </header>
+            <div class="content">
+                <a download="Ubercoin Wallet" id="dlLink">
+                    <canvas id="canvas" width="300" height="485"></canvas>
+                </a>
+            </div>
+        </div>
+        <div class="page receive slide-from-right">
+            <header>
+                <a href="#">
+                   <svg fill="#ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+                </a>
+                Receive Money
+            </header>
+            <div class="content">
+                <img id="identicon">
+                <div class="text">My Address:</div>
+                <img id="qrCode" class="scale-up">
+                <div class="sharing">
+                    <a id="whatsapp" data-action="share/whatsapp/share">
+                        <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="24" height="24" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve"><style>.s0{fill:#444;}</style><path d="M0.1 32l2.3-8.2c-1.4-2.4-2.1-5.1-2.1-7.9C0.2 7.1 7.3 0 16.1 0c4.2 0 8.2 1.7 11.2 4.7 3 3 4.6 7 4.6 11.2 0 8.7-7.1 15.9-15.9 15.9h0 0c-2.7 0-5.3-0.7-7.6-1.9L0.1 32zM8.9 26.9l0.5 0.3c2 1.2 4.3 1.8 6.7 1.8h0c7.3 0 13.2-5.9 13.2-13.2 0-3.5-1.4-6.8-3.9-9.3s-5.8-3.9-9.3-3.9C8.8 2.7 2.9 8.6 2.9 15.9c0 2.5 0.7 4.9 2 7l0.3 0.5 -1.3 4.9L8.9 26.9zM12.1 9.2c-0.3-0.8-0.6-0.7-0.9-0.7 -0.2 0-0.5 0-0.8 0 -0.3 0-0.7 0.1-1.1 0.5C9 9.4 8 10.4 8 12.3c0 2 1.4 3.8 1.6 4.1 0.2 0.3 2.8 4.3 6.8 6 0.9 0.4 1.7 0.7 2.3 0.8 0.9 0.3 1.8 0.3 2.5 0.2 0.8-0.1 2.3-1 2.7-1.9 0.3-0.9 0.3-1.7 0.2-1.9 -0.1-0.2-0.4-0.3-0.8-0.5C22.9 19 21 18 20.6 17.9c-0.4-0.1-0.6-0.2-0.9 0.2 -0.3 0.4-1 1.3-1.3 1.6 -0.2 0.3-0.5 0.3-0.9 0.1 -0.4-0.2-1.7-0.6-3.2-2 -1.2-1.1-2-2.3-2.2-2.7 -0.2-0.4 0-0.6 0.2-0.8 0.2-0.2 0.4-0.5 0.6-0.7 0.2-0.2 0.3-0.4 0.4-0.7 0.1-0.3 0.1-0.5 0-0.7C13.2 12 12.4 10 12.1 9.2z" fill="#444"/></svg>
+                    </a>
+                    <a id="email">
+                        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
+                    </svg>
+                    </a>
+                    <a id="print" href="javascript:window.print()">
+                        <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                    </svg>
+                    </a>
+<!--                     <a id="vcard" download="vcard.vcf" href="data:text/x-vcalendar;base64,QkVHSU46VkNBUkQKVVJMOmh0dHBzOi8vdWJlcmNlbnQuZmlyZWJhc2VhcHAuY29tLyNzZW5kP3M9Yml0Y29pbjoxQmgzeEhjdEVhcGhNOGp1Y0E0WXNHQnpDcHE2dnhoWkp3IApFTkQ6VkNBUkQ">
+                        <img data-src="images/contact_mail.svg">
+                    </a>
+ -->                </div>
+            </div>
+            <div id="publicKey"></div>
+        </div>
+        <div class="page scan slide-from-right">
+            <header>
+                <a href="#"><svg fill="#ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+            </svg></a>
+                Scan Code</header>
+            <div class="content">
+                <div id="outdiv"></div>
+                <canvas id="qr-canvas" width="320" height="600"></canvas>
+            </div>
+        </div>
+        <div class="page send slide-from-right">
+            <header>
+                <a href="#"><svg fill="#ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+            </svg></a>
+                <div class="flex"></div>
+                <span>
+            Balance: $<span id="balance">_.__</span>
+                </span>
+            </header>
+            </header>
+            <div class="content">
+                <h2>Send Money to:</h2>
+                <img id="identicon" height="64" width="64" class="scale-up">
+                <div class="input">
+                    <input id="amount" type="number" placeholder="0.00" min="0.01" max="999999" step="0.01" autocomplete="off" inputmode="numeric" pattern="[0-9]*">
+                </div>
+                <button onclick="send()">Send</button>
+            </div>
+        </div>
+        <div id="loading" hidden>
+            <div data-loader="ball-fade"></div>
+        </div>
+    </div>
+    <!--beginjs-->
+    <script src="libs/extern/ethereum.min.js"></script>
+    <script src="libs/extern/identicon.js"></script>
+    <script src="libs/extern/libqrcode.js"></script>
+    <script src="libs/extern/qr.js"></script>
+    <script src="libs/intern/slim-query.js"></script>
+    <script src="libs/intern/exchange.js"></script>
+    <script src="libs/intern/device-detection.js"></script>
+    <script src="libs/intern/backend.js"></script>
+    <script src="libs/intern/account.js"></script>
+    <script src="pages/home/home.js"></script>
+    <script src="pages/export/export.js"></script>
+    <script src="pages/receive/receive.js"></script>
+    <script src="pages/scan/file-input.js"></script>
+    <script src="libs/intern/image-resizer.js"></script>
+    <script src="pages/scan/scan.js"></script>
+    <script src="libs/intern/wallet.js"></script>
+    <script src="pages/send/send.js"></script>
+    <script src="pages/app.js"></script>
+    <script src="libs/intern/router.js"></script>
+    <script src="libs/intern/deferred-images.js"></script>
+    <!--endjs-->
+</body>
+
+</html>
