@@ -11,14 +11,24 @@ window.Account = (function() {
             })
         }
         privateKey = getFromLocalStorage('privateKey');
-        if (privateKey) {
-            publicKey = getFromLocalStorage('publicKey');
-            return callback({
-                public: publicKey,
-                private: privateKey
+        if(!privateKey){
+            return createPrivateKey(callback);
+        }
+        publicKey = getFromLocalStorage('publicKey');
+
+        if(!publicKey){
+            return Ethereum.privateToPublic(privateKey,function(pk){
+                localStorage.setItem('publicKey', pk);  
+                callback({
+                    public: pk,
+                    private: privateKey
+                });
             });
         }
-        createPrivateKey(callback);
+        callback({
+            public: publicKey,
+            private: privateKey
+        });
     }
 
     function getFromLocalStorage(key) {
