@@ -14,7 +14,7 @@
     }
 
 
-    $('header').onclick = function openScanner() {
+    $('header').onclick = function() {
         location = '#scan';
     };
 

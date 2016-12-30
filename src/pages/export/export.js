@@ -26,7 +26,7 @@
     }
 
     function paintText(key, publicKey) {
-        ctx.font = "13px sans-serif";
+        ctx.font = "12px sans-serif";
         ctx.textAlign = "center";
         ctx.strokeText(publicKey, 150, 280);
 

@@ -5,25 +5,28 @@ window.Account = (function() {
 
     function getKeyPairFromStorage(callback) {
         if (privateKey && publicKey) {
-            return callback({
+            callback({
                 public: publicKey,
                 private: privateKey
-            })
+            });
+            return;
         }
         privateKey = getFromLocalStorage('privateKey');
         if(!privateKey){
-            return createPrivateKey(callback);
+            createPrivateKey(callback);
+            return; 
         }
         publicKey = getFromLocalStorage('publicKey');
 
         if(!publicKey){
-            return Ethereum.privateToPublic(privateKey,function(pk){
+            Ethereum.privateToPublic(privateKey,function(pk){
                 localStorage.setItem('publicKey', pk);  
                 callback({
                     public: pk,
                     private: privateKey
                 });
             });
+            return;
         }
         callback({
             public: publicKey,
@@ -52,7 +55,7 @@ window.Account = (function() {
                     localStorage.setItem('privateKey', privateKey);
                     localStorage.setItem('publicKey', publicKey);
 
-                    var res={
+                    var res = {
                         public: publicKey,
                         private: privateKey
                     };
@@ -63,7 +66,7 @@ window.Account = (function() {
                 });
             }
         }
-        return call
+        return call;
     }());
 
     function fetchBalance(callback) {
@@ -71,7 +74,7 @@ window.Account = (function() {
             callback(formatBalance(balance));
         });
         Backend.nonce(publicKey, function(_nonce) {
-            nonce = Number(_nonce);// + 1;
+            nonce = Number(_nonce);
         })
     }
 
@@ -84,7 +87,7 @@ window.Account = (function() {
     }
 
     function getNonce() {
-        return nonce?nonce+1:0;
+        return nonce ? nonce+1 : 0;
     }
 
     function setPrivateKey(privateKey,callback) {

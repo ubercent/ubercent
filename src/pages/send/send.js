@@ -67,7 +67,7 @@
         var receiver = transaction.address;
         Wallet.spend(amount, receiver, function(success, error) {
             if (!success) {
-                alert(error ? error : 'An Error occured. Try again.');
+                alert(error ? JSON.stringify(error) : 'An Error occured. Try again.');
                 app.showLoading(false);
                 return;
             }
