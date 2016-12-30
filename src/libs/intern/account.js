@@ -77,9 +77,12 @@ window.Account = (function() {
         return nonce?nonce+1:0;
     }
 
-    function setPrivateKey(privateKey) {
+    function setPrivateKey(privateKey,callback) {
         localStorage.setItem('privateKey', privateKey);
-        localStorage.setItem('publicKey', Ethereum.privateToPublic(privateKey));
+        Ethereum.privateToPublic(privateKey,function(publicKey){
+            localStorage.setItem('publicKey', publicKey);  
+            callback();
+        });
     }
 
     return {
