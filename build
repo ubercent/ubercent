@@ -8,9 +8,11 @@ rm dist/pages.min.js
 rm dist/libs.min.js
 cat `find src -name '*.css'` | cleancss -o dist/styles.min.css
 cp -r src/images dist/images
+cp -r src/webworker dist/webworker
 cp src/index.html index.html
 cp src/manifest.json manifest.json
 perl -i -p0e 's/<!--begincss.*?endcss-->/<link rel="stylesheet" type="text\/css" href="dist\/styles.min.css">/s' index.html
 perl -i -p0e 's/<!--beginjs.*?endjs-->/<script src="dist\/scripts.min.js" async><\/script>/s' index.html
+perl -i -p0e 's/webworker\/ethereum-ww/dist\/webworker\/ethereum-ww/s' dist/scripts.min.js
 # git add dist && git commit -m "Initial dist subtree commit"
 # git subtree push --prefix dist origin gh-pages

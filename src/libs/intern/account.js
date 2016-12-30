@@ -3,22 +3,22 @@ window.Account = (function() {
     var publicKey;
     var nonce;
 
-    function getKeyPairFromStorage() {
+    function getKeyPairFromStorage(callback) {
         if (privateKey && publicKey) {
-            return {
+            return callback({
                 public: publicKey,
                 private: privateKey
-            }
+            })
         }
         privateKey = getFromLocalStorage('privateKey');
         if (privateKey) {
             publicKey = getFromLocalStorage('publicKey');
-            return {
+            return callback({
                 public: publicKey,
                 private: privateKey
-            };
+            });
         }
-        return createPrivateKey();
+        createPrivateKey(callback);
     }
 
     function getFromLocalStorage(key) {
@@ -29,20 +29,32 @@ window.Account = (function() {
         }
     }
 
-    function createPrivateKey() {
-        var dk = Ethereum.generateKeys();
+    var createPrivateKey = (function(){
+        var callbacks = [];
 
-        privateKey = dk.privateKey;
-        publicKey = dk.publicKey;
+        function call(callback){
+            callbacks.push(callback);
+            if(callbacks.length==1){
+                Ethereum.generateKeys(function(dk){
+                    privateKey = dk.privateKey;
+                    publicKey = dk.publicKey;
 
-        localStorage.setItem('privateKey', privateKey);
-        localStorage.setItem('publicKey', publicKey);
+                    localStorage.setItem('privateKey', privateKey);
+                    localStorage.setItem('publicKey', publicKey);
 
-        return {
-            public: publicKey,
-            private: privateKey
+                    var res={
+                        public: publicKey,
+                        private: privateKey
+                    };
+                    callbacks.forEach(function(cb){
+                        cb(res);
+                    });
+                    callbacks=[];   
+                });
+            }
         }
-    }
+        return call
+    }());
 
     function fetchBalance(callback) {
         Backend.balance(publicKey, function(balance) {

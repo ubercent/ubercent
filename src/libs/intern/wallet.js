@@ -4,13 +4,14 @@ var Wallet = (function() {
 
     function spend(amount, receiver, callback) {
     	console.log('spend',amount,receiver)
-        var privateKey = Account.getKeyPairFromStorage().private;
-
-        var tx = generateTx(Account.nonce(), gasPrice, gasLimit, receiver, amount, privateKey);
-        console.log('push', tx);
-        var signedTx = Ethereum.signTransaction(tx, privateKey);
-
-        pushTx(signedTx,callback);
+        Account.getKeyPairFromStorage(function(keys){
+            var privateKey = keys.private;
+            var tx = generateTx(Account.nonce(), gasPrice, gasLimit, receiver, amount, privateKey);
+            console.log('push', tx);
+            Ethereum.signTransaction(tx, privateKey,function(signedTx){
+                pushTx(signedTx,callback);
+            });
+        });
     }
 
     function generateTx(nonce, gasPrice, gasLimit, txTo, valueWei, privateKey) {

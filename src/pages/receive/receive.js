@@ -7,9 +7,10 @@
             //already initialized - no init operations
             return;
         }
-        var keys = Account.getKeyPairFromStorage();
-        publicKey = keys.public;
-        initUI();
+        var keys = Account.getKeyPairFromStorage(function(keys){
+             publicKey = keys.public;
+            initUI();
+        }); 
     }
 
     function initUI() {

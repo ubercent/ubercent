@@ -1,9 +1,13 @@
 (function() {
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
-    var keys = Account.getKeyPairFromStorage();
-    var key = keys.private;
-    var publicKey = keys.public;
+    var key;
+    var publicKey;
+    Account.getKeyPairFromStorage(function(k){
+        key = k.private;
+        publicKey = k.public;
+    });
+
     var lastPaint;
 
     function getQRCode(key, callback) {
@@ -46,7 +50,7 @@
         img.onload = function() {
             ctx.drawImage(img, 50, 50, 200, 200);
         };
-        updateIdenticon(img, keys.public, 200, [240, 240, 240, 255]);
+        updateIdenticon(img, publicKey, 200, [240, 240, 240, 255]);
     }
 
 
