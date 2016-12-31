@@ -3,12 +3,10 @@ var Wallet = (function() {
     var gasLimit = 53000;
 
     function spend(amount, receiver, callback) {
-    	console.log('spend',amount,receiver)
         var keys = Account.getKeyPairFromStorage();
-        var privateKey = keys.private;
         var tx = Ether.generateTx(receiver, amount, Account.nonce(), gasPrice, gasLimit);
         console.log('push', tx);
-        var signedTx = Ether.signTransaction(tx, privateKey);
+        var signedTx = Ether.signTransaction(keys.private,tx);
         console.log('signed', signedTx);
         Backend.pushTransaction(signedTx,callback);
     }
