@@ -43,8 +43,8 @@ window.Account = (function() {
 
     function createPrivateKey(){
         var keys = Ether.generateKeys();
-        privateKey = keys.privateKey;
-        publicKey = keys.publicKey;
+        privateKey = keys.private;
+        publicKey = keys.public;
         localStorage.setItem('privateKey', privateKey);
         localStorage.setItem('publicKey', publicKey);
         return {
