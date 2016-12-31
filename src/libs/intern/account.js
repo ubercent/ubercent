@@ -3,35 +3,34 @@ window.Account = (function() {
     var publicKey;
     var nonce;
 
-    function getKeyPairFromStorage(callback) {
+    function getKeyPairFromStorage() {
         if (privateKey && publicKey) {
-            callback({
+            return {
                 public: publicKey,
                 private: privateKey
-            });
-            return;
+            };
         }
         privateKey = getFromLocalStorage('privateKey');
+        
         if(!privateKey){
-            createPrivateKey(callback);
-            return; 
+            return createPrivateKey(); 
         }
+
         publicKey = getFromLocalStorage('publicKey');
 
         if(!publicKey){
-            Ethereum.privateToPublic(privateKey,function(pk){
-                localStorage.setItem('publicKey', pk);  
-                callback({
-                    public: pk,
+            publicKey = Ether.privateToPublic(privateKey);
+            localStorage.setItem('publicKey', publicKey);  
+            return {
+                    public: publicKey,
                     private: privateKey
-                });
-            });
-            return;
+                };
         }
-        callback({
-            public: publicKey,
-            private: privateKey
-        });
+
+        return {
+            public:publicKey,
+            private:privateKey
+        }
     }
 
     function getFromLocalStorage(key) {
@@ -42,32 +41,17 @@ window.Account = (function() {
         }
     }
 
-    var createPrivateKey = (function(){
-        var callbacks = [];
-
-        function call(callback){
-            callbacks.push(callback);
-            if(callbacks.length==1){
-                Ethereum.generateKeys(function(dk){
-                    privateKey = dk.privateKey;
-                    publicKey = dk.publicKey;
-
-                    localStorage.setItem('privateKey', privateKey);
-                    localStorage.setItem('publicKey', publicKey);
-
-                    var res = {
-                        public: publicKey,
-                        private: privateKey
-                    };
-                    callbacks.forEach(function(cb){
-                        cb(res);
-                    });
-                    callbacks=[];   
-                });
-            }
-        }
-        return call;
-    }());
+    function createPrivateKey(){
+        var keys = Ether.generateKeys();
+        privateKey = keys.privateKey;
+        publicKey = keys.publicKey;
+        localStorage.setItem('privateKey', privateKey);
+        localStorage.setItem('publicKey', publicKey);
+        return {
+            public: publicKey,
+            private: privateKey
+        }; 
+    }
 
     function fetchBalance(callback) {
         Backend.balance(publicKey, function(balance) {
@@ -90,12 +74,12 @@ window.Account = (function() {
         return nonce ? nonce+1 : 0;
     }
 
-    function setPrivateKey(privateKey,callback) {
-        localStorage.setItem('privateKey', privateKey);
-        Ethereum.privateToPublic(privateKey,function(publicKey){
-            localStorage.setItem('publicKey', publicKey);  
-            callback();
-        });
+    function setPrivateKey(pK) {
+        privateKey = pK;
+        localStorage.setItem('privateKey', pK);
+
+        publicKey = Ethereum.privateToPublic(privateKey);
+        localStorage.setItem('publicKey', publicKey);  
     }
 
     return {

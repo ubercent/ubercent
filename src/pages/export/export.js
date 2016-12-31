@@ -1,13 +1,9 @@
 (function() {
     var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
-    var key;
-    var publicKey;
-    Account.getKeyPairFromStorage(function(k){
-        key = k.private;
-        publicKey = k.public;
-    });
-
+    var keys = Account.getKeyPairFromStorage();
+    var key = keys.private;
+    var publicKey = keys.public;
     var lastPaint;
 
     function getQRCode(key, callback) {

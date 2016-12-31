@@ -19,10 +19,9 @@
     };
 
     function init() {
-        Account.getKeyPairFromStorage(function(keys){
-            Account.fetchBalance(setBalanceUI);
-            updateIdenticon($('#identicon'), keys.public);
-        });
+        var keys = Account.getKeyPairFromStorage();
+        Account.fetchBalance(setBalanceUI);
+        updateIdenticon($('#identicon'), keys.public);
     }
     init();
 })()

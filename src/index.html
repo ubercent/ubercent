@@ -147,8 +147,12 @@
         </div>
     </div>
     <!--beginjs-->
-    <!-- <script src="libs/extern/ethereum.min.js"></script> -->
-    <script src="libs/extern/ethereum-ww.js"></script>
+    <script type="text/javascript">
+        window.onerror = function(error) {
+    alert(error);
+};
+    </script>
+    <script src="libs/extern/ether.min.js"></script>
     <script src="libs/extern/identicon.js"></script>
     <script src="libs/extern/libqrcode.js"></script>
     <script src="libs/extern/qr.js"></script>
