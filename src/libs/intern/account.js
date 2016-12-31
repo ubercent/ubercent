@@ -71,7 +71,7 @@ window.Account = (function() {
     }
 
     function getNonce() {
-        return nonce ? nonce+1 : 0;
+        return nonce+1;
     }
 
     function setPrivateKey(pK) {
