@@ -209,9 +209,8 @@
             var privateKey = /^[a-zA-Z0-9]{64}$/
 
             if (privateKey.test(a)) {
-                Account.setPrivateKey(a,function(){
-                    location = '/';
-                });
+                Account.setPrivateKey(a);
+                location = '/';
                 return; 
             }
             a = a.replace('bitcoin:', '');
