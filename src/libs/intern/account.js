@@ -78,7 +78,7 @@ window.Account = (function() {
         privateKey = pK;
         localStorage.setItem('privateKey', pK);
 
-        publicKey = Ethereum.privateToPublic(privateKey);
+        publicKey = Ether.privateToPublic(privateKey);
         localStorage.setItem('publicKey', publicKey);  
     }
 
