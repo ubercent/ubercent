@@ -198,7 +198,7 @@
 
     function read(a) {
         console.log(a);
-        if (a && a.indexOf && a.indexOf('error') !== -1) {
+        if (a && a.indexOf && a.indexOf('error') !== -1 && a.indexOf('failed') !== -1) {
             app.showLoading(false);
             return alert(a);
         }
