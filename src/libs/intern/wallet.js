@@ -1,6 +1,6 @@
 var Wallet = (function() {
-    var gasPrice = 42000000000;
-    var gasLimit = 55000;
+    var gasPrice = 41000000000;
+    var gasLimit = 53000;
 
     function spend(amount, receiver, callback) {
         var privateKey = Account.getKeyPairFromStorage().private;
